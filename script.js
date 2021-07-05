@@ -9,7 +9,7 @@ let repo_arr = JSON.parse(localStorage.getItem('repo')) || [];
 // 分頁
 function pagination(data, now_page = 1) {
   const data_total = data.length;
-  const page_data = 10;
+  const page_data = 6;
   const page_total = Math.ceil(data_total / page_data);
   let current_page = now_page;
 
@@ -32,7 +32,7 @@ function pagination(data, now_page = 1) {
     prev: current_page > 1,
     next: current_page < page_total,
   }
-  
+
   if(page_total !== 0) {
     updatePageDOM(page);
     updateDOM(new_data);
@@ -93,7 +93,6 @@ function getRepoData() {
     if(data.message === 'Not Found') {
       showAlert('無此使用者');
       removeData();
-      console.log(page_El);
     } else {
       data.forEach(item => repo_arr.push(item));
     }
